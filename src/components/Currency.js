@@ -19,6 +19,7 @@ const Currency = () => {
     );
 
     const customStyles = {
+        width: "50%",
         control: (base, state) => ({
             ...base,
             background: "#A5E1A0",
@@ -29,20 +30,20 @@ const Currency = () => {
             borderColor: "#A5E1A0",
             // Removes weird border around container
             boxShadow: state.isFocused ? null : null,
+            paddingLeft: "10px",
             "&:hover": {
                 // Overwrittes the different states of border
-                background: "white",
-                color: "#A5E1A0"
+                borderColor: "#A5E1A0"
             }
         }),
         menu: base => ({
             ...base,
             // override border radius to match the box
-            borderRadius: 0,
+            borderRadius: "0px 0px 5px 5px",
             // kill the gap
             marginTop: 0,
             background: "#A5E1A0",
-            color: "white",
+            color: "black",
         }),
         singleValue: (base) => ({
           ...base,
@@ -54,6 +55,20 @@ const Currency = () => {
           width: "fit-content",
           backgroundColor: "#A5E1A0"
         }),
+        option: (base) => ({
+            textAlign: "center",
+            height: "2rem",
+            "&:hover": {
+                // Overwrittes the different states of border
+                backgroundColor: "white",
+                color: "black",
+            }
+        }),
+        dropdownIndicator: styles => ({ 
+            color: 'white', 
+        }),
+        indicatorSeparator: (styles) => ({display:'none'})
+        
     };
 
     const changeCurrency = (val) => {
@@ -64,12 +79,13 @@ const Currency = () => {
     };
 
     return (
-        <div className="alert alert-light">
+        <div className="alert alert-secondary">
             <Select 
                 options={options} 
                 onChange={(event) => changeCurrency(event.value)}
                 components={{ Control }}
                 styles={customStyles}
+                placeholder=""
             />
             {/* {
                 <select
